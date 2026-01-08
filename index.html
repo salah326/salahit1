@@ -2,9 +2,10 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>صلاح محمد قاسم</title>
 
+  <!-- خط عربي جميل من Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
@@ -19,27 +20,20 @@
       --cyan:#22d3ee;
     }
 
-    *{ box-sizing: border-box; }
-    html, body { height: 100%; }
     body{
       margin:0;
-      font-family:"Tajawal", system-ui, sans-serif;
-
-      /* Responsive center layout */
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: clamp(14px, 3.5vw, 32px);
-
+      min-height:100vh;
+      display:grid;
+      place-items:center;
       background:
         radial-gradient(1200px 600px at 20% 20%, rgba(34,211,238,.18), transparent 55%),
         radial-gradient(900px 500px at 80% 30%, rgba(251,113,133,.16), transparent 55%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
-
-      overflow-x:hidden;
+      font-family:"Tajawal", system-ui, sans-serif;
+      overflow:hidden;
     }
 
-    /* خلفية نجوم خفيفة */
+    /* نجوم خفيفة بالخلفية */
     .stars::before{
       content:"";
       position:fixed;
@@ -55,6 +49,7 @@
       animation: drift 14s linear infinite;
       pointer-events:none;
     }
+
     @keyframes drift{
       0%{ transform: translate3d(0,0,0) rotate(0deg); }
       100%{ transform: translate3d(-2%,2%,0) rotate(1deg); }
@@ -62,21 +57,16 @@
 
     .card{
       position:relative;
-
-      /* أهم جزء للديناميكية: يتغير حسب حجم الشاشة */
-      width: min(920px, 100%);
-      padding: clamp(18px, 4.5vw, 44px);
-
-      border-radius: clamp(16px, 2.8vw, 28px);
+      width:min(880px, 92vw);
+      padding: clamp(22px, 5vw, 42px);
+      border-radius: 26px;
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.14);
-      box-shadow: 0 20px 50px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.10);
+      box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.10);
       backdrop-filter: blur(10px);
       overflow:hidden;
-
-      /* يمنع الكارد يصير طويل جدًا على الشاشات الصغيرة */
-      max-height: calc(100vh - 2 * clamp(14px, 3.5vw, 32px));
-      overflow:auto;
     }
 
     /* لمعة تمر */
@@ -92,6 +82,7 @@
       animation: shine 4.5s ease-in-out infinite;
       pointer-events:none;
     }
+
     @keyframes shine{
       0%, 35%{ transform: translateX(-40%) rotate(10deg); opacity:0; }
       50%{ opacity:1; }
@@ -109,61 +100,52 @@
       color: rgba(255,255,255,.9);
       font-weight:700;
       letter-spacing:.3px;
-      margin-bottom: clamp(12px, 2vw, 18px);
-      font-size: clamp(12px, 2.2vw, 15px);
+      margin-bottom: 18px;
     }
+
     .dot{
       width:10px; height:10px; border-radius:50%;
       background: linear-gradient(180deg, var(--cyan), var(--pink));
       box-shadow: 0 0 18px rgba(34,211,238,.45);
-      flex: 0 0 auto;
     }
 
     .name{
       margin:0;
-      line-height:1.08;
+      line-height:1.1;
       text-align:center;
       font-family: "Rakkas", "Tajawal", serif;
-
-      /* يتغير بشكل سلس للجوال/التابلت/اللابتوب */
-      font-size: clamp(40px, 7vw, 86px);
-
+      font-size: clamp(44px, 7vw, 84px);
       background: linear-gradient(90deg, var(--gold1), var(--gold2), #ffe08a);
       -webkit-background-clip: text;
       background-clip:text;
       color: transparent;
-
       text-shadow:
         0 10px 30px rgba(245,158,11,.22),
         0 2px 0 rgba(0,0,0,.18);
-
       animation: floaty 3.2s ease-in-out infinite;
-      word-break: break-word;
     }
+
     @keyframes floaty{
       0%,100%{ transform: translateY(0); }
       50%{ transform: translateY(-6px); }
     }
 
     .sub{
-      margin: clamp(10px, 2vw, 14px) 0 0;
+      margin: 14px 0 0;
       text-align:center;
       color: rgba(255,255,255,.78);
-      font-size: clamp(13px, 2.6vw, 18px);
-      line-height: 1.8;
-      padding-inline: clamp(0px, 2vw, 20px);
+      font-size: clamp(14px, 2.3vw, 18px);
     }
 
     .frame{
-      margin-top: clamp(16px, 3vw, 26px);
-      padding: clamp(14px, 2.8vw, 18px);
-      border-radius: clamp(14px, 2.4vw, 18px);
+      margin-top: 26px;
+      padding: 18px;
+      border-radius: 18px;
       background: linear-gradient(135deg, rgba(34,211,238,.14), rgba(251,113,133,.10));
       border: 1px dashed rgba(255,255,255,.22);
       text-align:center;
       color: rgba(255,255,255,.86);
       font-weight: 700;
-      font-size: clamp(13px, 2.4vw, 18px);
     }
 
     .orn{
@@ -172,37 +154,22 @@
       opacity:.9;
       font-weight:900;
       letter-spacing: 2px;
-      font-size: clamp(14px, 2.6vw, 20px);
-      line-height: 1.9;
-      word-break: break-word;
-    }
-
-    /* تحسين للجوال الصغير جداً */
-    @media (max-width: 380px){
-      .badge{ padding: 8px 12px; gap:8px; }
-      .dot{ width:9px; height:9px; }
-      .orn{ letter-spacing: 1px; }
-    }
-
-    /* احترام إعدادات تقليل الحركة */
-    @media (prefers-reduced-motion: reduce){
-      .stars::before, .card::after, .name{ animation: none !important; }
     }
   </style>
 </head>
 
 <body class="stars">
-  <main class="card" role="img" aria-label="اسم مزخرف: صلاح محمد قاسم">
-    <div class="badge"><span class="dot"></span> عرض اسم مزخرف</div>
+  <div class="card" role="img" aria-label="اسم مزخرف: صلاح محمد قاسم">
+    <div class="badge"><span class="dot"></span></div>
 
     <h1 class="name">صلاح محمد قاسم</h1>
-    <p class="sub">✨ تصميم عربي أنيق يتكيّف تلقائيًا مع الجوال والتابلت والكمبيوتر ✨</p>
+    <p class="sub" aria-hidden="true">&nbsp;</p>
 
-    <section class="frame">
+    <div class="frame">
       <span>❖ ❖ ❖</span>
-      <span class="orn">✦ صـــلاح ✦ مـــحمد ✦ قـــاسم ✦</span>
+      <span class="orn">✦  صـــلاح    مـــحمد   قـــاسم  ✦</span>
       <span>❖ ❖ ❖</span>
-    </section>
-  </main>
+    </div>
+  </div>
 </body>
 </html>
